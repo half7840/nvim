@@ -2,14 +2,17 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'brglng/vim-im-select'
 Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tomasiser/vim-code-dark'
 Plug 'frazrepo/vim-rainbow'
 Plug 'wakatime/vim-wakatime'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
@@ -17,11 +20,11 @@ Plug 'prettier/vim-prettier', {
   \ }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
+Plug 'junegunn/goyo.vim'
 Plug 'keith/swift.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'joshdick/onedark.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'scrooloose/nerdcommenter'
 Plug 'edkolev/promptline.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-fugitive'
@@ -33,6 +36,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'osyo-manga/vim-anzu'
 Plug 'itchyny/vim-cursorword'
 Plug 'blueyed/vim-diminactive'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,6 +99,16 @@ nnoremap <silent><F1> :NERDTreeToggle<CR><bar>:TagbarToggle <CR>
 	" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+
+augroup nerdtreehidecwd
+	autocmd!
+	autocmd FileType nerdtree syntax match NERDTreeHideCWD #^[</].*$# conceal
+augroup end
+
+augroup nerdtreehidecwd
+	autocmd!
+	autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
+augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "버퍼 이동
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,13 +134,14 @@ set clipboard=unnamedplus
 set mouse=a
 set encoding=UTF-8
 set nocompatible
+colorschem codedark
 " 문법이 존재하면
 if has("syntax")
 " 문법 강조를 수행
 	syntax on
 endif
 
-colorschem onedark
+"colorschem onedark
 
 
 if has('nvim')
@@ -147,7 +162,7 @@ autocmd BufEnter * silent! lcd %:p:h
 " powerline-font 활성화
     let g:airline_powerline_fonts = 1
 " luna 테마 사용
-    let g:airline_theme = 'luna'
+    let g:airline_theme = 'codedark'
 " tabline 에 파일명만 출력 되도록 설정
     let g:airline#extensions#tabline#formatter = 'unique_tail'
 " 창의 상단에 표시되도록 설정
