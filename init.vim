@@ -37,6 +37,8 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'itchyny/vim-cursorword'
 Plug 'blueyed/vim-diminactive'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'goerz/jupytext.vim'
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -65,7 +67,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -80,7 +81,7 @@ nnoremap <silent><F1> :NERDTreeToggle<CR><bar>:TagbarToggle <CR>
 	let NERDTreeMenuUp='n'
 	let NERDTreeShowHidden=1
 	let NERDTreeIgnore=[".git", ".DS_Store"]
-	let g:NERDTreeChDirMode = 2
+	let g:NERDTreeChDirMode = 1
     let g:NERDTreeWinSize=30
 	let g:webdevicons_enable_nerdtree = 1
 	let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -105,10 +106,6 @@ augroup nerdtreehidecwd
 	autocmd FileType nerdtree syntax match NERDTreeHideCWD #^[</].*$# conceal
 augroup end
 
-augroup nerdtreehidecwd
-	autocmd!
-	autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
-augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "버퍼 이동
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -223,7 +220,7 @@ nnoremap <C-p> :Files<Cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python3.11 '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>Author
 autocmd filetype swift nnoremap <F4> :w <bar> exec '!swiftc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
