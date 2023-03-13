@@ -225,3 +225,9 @@ autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.s
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>Author
 autocmd filetype swift nnoremap <F4> :w <bar> exec '!swiftc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 
+"=========================================================================
+"Vim Wiki
+"=========================================================================
+let maplocalleader "\\"
+
+let g:vimwiki_conceallevel = 0
