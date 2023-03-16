@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+caall plug#begin('~/.vim/plugged')
 
 Plug 'brglng/vim-im-select'
 Plug 'preservim/nerdtree'
@@ -131,6 +131,7 @@ set clipboard=unnamedplus
 set mouse=a
 set encoding=UTF-8
 set nocompatible
+set noimd
 colorschem codedark
 " 문법이 존재하면
 if has("syntax")
