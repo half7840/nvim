@@ -1,4 +1,4 @@
-caall plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'brglng/vim-im-select'
 Plug 'preservim/nerdtree'
