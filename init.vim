@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'Raimondi/delimitMate'
 Plug 'brglng/vim-im-select'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -108,8 +109,8 @@ augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "버퍼 이동
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent><C-h> :tabprevious<CR>
-nnoremap <silent><C-i> :tabnext<CR>
+nnoremap <silent><C-h> :bp<CR>
+nnoremap <silent><C-i> :bn<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F2> :Files %:p:h<CR>
@@ -225,3 +226,7 @@ autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.s
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>Author
 autocmd filetype swift nnoremap <F4> :w <bar> exec '!swiftc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 
+"=================================================================================
+"괄호 자동완성
+"=================================================================================
+let delimitMate_expand_cr=1
