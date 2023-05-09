@@ -25,6 +25,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'keith/swift.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'joshdick/onedark.vim'
+Plug 'olimorris/onedarkpro.nvim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'edkolev/promptline.vim'
 Plug 'plasticboy/vim-markdown'
@@ -39,6 +40,8 @@ Plug 'itchyny/vim-cursorword'
 Plug 'blueyed/vim-diminactive'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'goerz/jupytext.vim'
+Plug 'tribela/vim-transparent'
+
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
